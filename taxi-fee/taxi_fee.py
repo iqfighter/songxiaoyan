@@ -8,3 +8,5 @@ def taxi_fee(miles):
 		return 6   
 	elif (miles <= 8):
 		return round (6 + (miles - 2) * 0.8)
+	else:
+		return round (6 + (8 - 2) * 0.8 + (miles - 8) *1.2)

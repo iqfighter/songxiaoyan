@@ -27,5 +27,9 @@ class test_(unittest.TestCase):
     def test_given_equals_to_8miles_should_charge_6_plus_8mao_per_mile_then_round(self):  
         self.assertEqual(taxi_fee(8), round (6 + (8-2) * 0.8))      
 
+    def test_given_greater_than_8miles_should_charge_4mao_more_per_mile_for_greater_parts_then_round(self):  
+        self.assertEqual(taxi_fee(9), round (6 + (8-2) * 0.8 + (9-8) * 1.2))
+
+
 if __name__ =='__main__':  
     unittest.main() 
