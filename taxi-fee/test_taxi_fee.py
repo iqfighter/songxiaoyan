@@ -11,9 +11,10 @@ class test_(unittest.TestCase):
     
     def tearDown(self):  
         pass        
-    
-    def test_taxi_fee(self):  
-        self.assertEqual(1, 1)         
+
+    def test_given_0miles_should_charge_0(self):  
+        self.assertEqual(taxi_fee(0), 0) 
+
 
 if __name__ =='__main__':  
     unittest.main() 
