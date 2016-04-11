@@ -1,11 +1,13 @@
 #!/usr/bin/env python  
 #encoding: utf-8 
 
-def taxi_fee(miles, waitminutes):  
+def taxi_fee(miles, waitminutes): 
 	return round(charge_miles(miles) + charge_waitminutes(waitminutes))
   
 def charge_miles(miles):  
-	if (miles <= 0):
+	valid_miles(miles)
+
+	if (miles == 0):
 		return 0
 	elif (miles <= 2):
 		return 6   
@@ -14,5 +16,17 @@ def charge_miles(miles):
 	else:
 		return 6 + (8 - 2) * 0.8 + (miles - 8) *1.2
 
-def charge_waitminutes(minutes):
-	return 0.25 * minutes
+def charge_waitminutes(waitminutes):
+	valid_waitminutes(waitminutes)
+	return 0.25 * waitminutes
+
+def valid_miles(miles): 
+	if (miles < 0):
+		raise invalid_miles
+
+def valid_waitminutes(waitminutes): 
+	if (waitminutes < 0):
+		raise invalid_waitminutes
+
+class invalid_miles(Exception): "miles should be zero or positive numbers"
+class invalid_waitminutes(Exception): "minutes should be zero or positive numbers"

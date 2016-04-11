@@ -3,6 +3,8 @@
   
 import unittest  
 from taxi_fee import taxi_fee
+from taxi_fee import invalid_miles
+from taxi_fee import invalid_waitminutes
   
 class test_(unittest.TestCase):  
       
@@ -32,6 +34,13 @@ class test_(unittest.TestCase):
 
     def test_given_less_than_2miles_and_wait_10_minutes_should_charge_6_plus_25cent_per_minute_then_round(self):  
         self.assertEqual(taxi_fee(1,10), round(6 + 0.25 * 10))
+
+    def test_given_invalid_miles_should_throw_exception(self):  
+        self.assertRaises(invalid_miles, taxi_fee, -1, 1)
+
+    def test_given_invalid_waitminutes_should_throw_exception(self): 
+        self.assertRaises(invalid_waitminutes, taxi_fee, 1, -1)
+
 
 if __name__ =='__main__':  
     unittest.main() 
